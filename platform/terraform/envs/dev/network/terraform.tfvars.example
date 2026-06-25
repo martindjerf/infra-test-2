@@ -1,0 +1,4 @@
+# Example values only. Do not put secrets in this file.
+
+environment = "dev"
+region      = "LON1"
