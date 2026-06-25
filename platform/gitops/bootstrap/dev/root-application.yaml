@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: terra-dev-root
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+spec:
+  project: default
+  source: 
+    repoURL: https://github.com/martindjerf/infra-test-2.git
+    targetRevision: main
+    path: platform/gitops/environments/dev/root
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
