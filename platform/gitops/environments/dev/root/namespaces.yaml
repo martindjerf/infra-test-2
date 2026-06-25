@@ -8,18 +8,18 @@ metadata:
     terra/environment: dev
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-  spec:
-    project: default
-    source:
-      repoURL: https://github.com/martindjerf/infra-test-2.git
-      targetRevision: main
-      path: platform/gitops/platform-services/namespaces/dev
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: argocd
-    syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
-      syncOptions:
-        - CreateNamespace=false
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/martindjerf/infra-test-2.git
+    targetRevision: main
+    path: platform/gitops/platform-services/namespaces/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
