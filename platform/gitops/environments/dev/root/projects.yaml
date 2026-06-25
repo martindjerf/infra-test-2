@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: terra-dev-namespaces
+  name: terra-dev-projects
   namespace: argocd
   labels:
     app.kubernetes.io/part-of: terra
     terra/environment: dev
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-10"
 spec:
-  project: terra-dev-platform
+  project: default
   source:
     repoURL: https://github.com/martindjerf/infra-test-2.git
     targetRevision: main
-    path: platform/gitops/platform-services/namespaces/dev
+    path: platform/gitops/platform-services/projects/dev
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd

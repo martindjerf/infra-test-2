@@ -1,0 +1,89 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: terra-dev-platform
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+spec:
+  description: Dev platform services and cluster-level platform resources
+
+  sourceRepos:
+    - https://github.com/martindjerf/infra-test-2.git
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: '*'
+
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: argoproj.io
+      kind: AppProject
+    - group: argoproj.io
+      kind: Application
+
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: terra-dev-apps
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+spec:
+  description: Dev application workloads
+
+  sourceRepos:
+    - https://github.com/YOUR_USER/YOUR_REPO.git
+
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: apps
+    - server: https://kubernetes.default.svc
+      namespace: data
+    - server: https://kubernetes.default.svc
+      namespace: jobs
+
+  clusterResourceWhitelist: []
+
+  namespaceResourceWhitelist:
+    - group: ''
+      kind: ConfigMap
+    - group: ''
+      kind: Secret
+    - group: ''
+      kind: Service
+    - group: ''
+      kind: ServiceAccount
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: StatefulSet
+    - group: apps
+      kind: DaemonSet
+    - group: batch
+      kind: Job
+    - group: batch
+      kind: CronJob
+    - group: networking.k8s.io
+      kind: NetworkPolicy
+    - group: autoscaling
+      kind: HorizontalPodAutoscaler
+    - group: policy
+      kind: PodDisruptionBudget
