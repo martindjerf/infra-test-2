@@ -88,3 +88,5 @@ spec:
       kind: HorizontalPodAutoscaler
     - group: policy
       kind: PodDisruptionBudget
+    - group: bitnami.com
+      kind: SealedSecret
