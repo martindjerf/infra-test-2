@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: terra-dev-frontend
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "50"
+spec:
+  project: terra-dev-apps
+  source:
+    repoURL: https://github.com/martindjerf/infra-test-2.git
+    targetRevision: main
+    path: platform/gitops/apps/dev/frontend
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
