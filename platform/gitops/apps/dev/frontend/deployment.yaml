@@ -55,7 +55,7 @@ spec:
                   key: BACKEND_API_URL
           volumeMounts:
             - name: content
-              mountPath: /usr/share/html/index.html
+              mountPath: /usr/share/nginx/html/index.html
               subPath: index.html
               readOnly: true
           readinessProbe:
