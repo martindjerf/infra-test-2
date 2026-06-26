@@ -22,11 +22,12 @@ spec:
       maxSurge: 1
   template:
     metadata:
-      app.kubernetes.io/name: frontend
-      app.kubernetes.io/component: web
-      app.kubernetes.io/part-of: terra
-      terra/environment: dev
-      access/backend-api: "true"
+      labels:
+        app.kubernetes.io/name: frontend
+        app.kubernetes.io/component: web
+        app.kubernetes.io/part-of: terra
+        terra/environment: dev
+        access/backend-api: "true"
     spec:
       serviceAccount: frontend
       automountServiceAccountToken: false
@@ -86,8 +87,8 @@ spec:
             capabilities:
               drop: 
                 - ALL
-    volumes:
-      - name: content
-        configMap:
-          name: frontend-content
+      volumes:
+        - name: content
+          configMap:
+            name: frontend-content
 
