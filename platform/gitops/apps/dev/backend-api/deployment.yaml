@@ -89,4 +89,4 @@ spec:
       volumes:
         - name: content
           configMap:
-            name: backend-api-config
+            name: backend-api-content
