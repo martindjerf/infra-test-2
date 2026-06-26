@@ -11,6 +11,7 @@ spec:
 
   sourceRepos:
     - https://github.com/martindjerf/infra-test-2.git
+    - https://github.com/bitnami-labs/sealed-secrets.git
 
   destinations:
     - server: https://kubernetes.default.svc
@@ -50,7 +51,7 @@ spec:
   description: Dev application workloads
 
   sourceRepos:
-    - https://github.com/YOUR_USER/YOUR_REPO.git
+    - https://github.com/martindjerf/infra-test-2.git
 
   destinations:
     - server: https://kubernetes.default.svc
