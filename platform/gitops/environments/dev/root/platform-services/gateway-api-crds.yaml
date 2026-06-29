@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: terra-dev-gateway-api-crds
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  project: terra-dev-platform
+  source:
+    repoURL: https://github.com/nginx/nginx-gateway-fabric.git
+    targetRevision: v2.6.5
+    path: config/crd/gateway-api/standard
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gateway-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
+      - ServerSideApply=true

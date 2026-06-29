@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: terra-dev-nginx-gateway-fabric
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: terra-dev-platform
+  source:
+    repoURL: ghcr.io/nginx/charts
+    chart: nginx-gateway-fabric
+    targetRevision: 2.6.5
+    helm: 
+      releaseName: ngf
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gateway-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

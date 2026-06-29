@@ -34,6 +34,8 @@ spec:
       kind: AppProject
     - group: argoproj.io
       kind: Application
+    - group: gateway.networking.k8s.io
+      kind: GatewayClass
 
   namespaceResourceWhitelist:
     - group: '*'
@@ -52,6 +54,8 @@ spec:
 
   sourceRepos:
     - https://github.com/martindjerf/infra-test-2.git
+    - https://github.com/nginx/nginx-gateway-fabric.git
+    - ghcr.io/nginx/charts
 
   destinations:
     - server: https://kubernetes.default.svc
