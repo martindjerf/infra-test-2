@@ -38,6 +38,10 @@ spec:
       kind: Application
     - group: gateway.networking.k8s.io
       kind: GatewayClass
+    - group: admissionregistration.k8s.io
+      kind: ValidatingAdmissionPolicyBinding
+    - group: admissionregistration.k8s.io
+      kind: ValidatingAdmissionPolicy 
 
   namespaceResourceWhitelist:
     - group: '*'
