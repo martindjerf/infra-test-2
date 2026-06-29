@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io
+apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: backend-api-default-deny-ingress
@@ -16,7 +16,7 @@ spec:
   policyTypes:
     - Ingress
 ---
-apiVersion: networking.k8s.io
+apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: backend-api-allow-frontend
