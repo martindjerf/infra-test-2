@@ -13,6 +13,7 @@ spec:
     - https://github.com/martindjerf/infra-test-2.git
     - https://github.com/bitnami-labs/sealed-secrets.git
     - ghcr.io/nginx/charts
+    - https://github.com/nginx/nginx-gateway-fabric.git
 
   destinations:
     - server: https://kubernetes.default.svc
