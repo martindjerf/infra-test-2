@@ -12,6 +12,7 @@ spec:
   sourceRepos:
     - https://github.com/martindjerf/infra-test-2.git
     - https://github.com/bitnami-labs/sealed-secrets.git
+    - ghcr.io/nginx/charts
 
   destinations:
     - server: https://kubernetes.default.svc
