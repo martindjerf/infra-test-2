@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io
+kind: NetworkPolicy
+metadata:
+  name: backend-api-default-deny-ingress
+  namespace: apps
+  labels:
+    app.kubernetes.io/name: backend-api
+    app.kubernetes.io/component: api
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+spec:
+  podSelector: 
+    matchLabels:
+      app.kubernetes.io/name: backend-api
+      app.kubernetes.io/component: api
+  policyTypes:
+    - Ingress
+---
+apiVersion: networking.k8s.io
+kind: NetworkPolicy
+metadata:
+  name: backend-api-allow-frontend
+  namespace: apps
+  labels:
+    app.kubernetes.io/name: backend-api
+    app.kubernetes.io/component: api
+    app.kubernetes.io/part-of: terra
+    terra/environment: dev
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: backend-api
+      app.kubernetes.io/component: api
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              access/backend-api: "true"
+      ports:
+        - protocol: TCP
+          port: 8080
