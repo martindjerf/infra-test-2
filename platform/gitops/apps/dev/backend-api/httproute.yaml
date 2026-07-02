@@ -24,7 +24,7 @@ spec:
         - type: URLRewrite
           urlRewrite: 
             path: 
-              type: RepalceFullPath
+              type: ReplaceFullPath
               replaceFullPath: /
       backendRefs:
         - name: backend-api
