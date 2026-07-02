@@ -12,7 +12,7 @@ spec:
   hostnames:
     - frontend.dev.terra.local
   parentRefs:
-    - name: http
+    - name: public-http
       namespace: gateway-system
       sectionName: http
   rules:
