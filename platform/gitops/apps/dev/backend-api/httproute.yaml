@@ -37,7 +37,7 @@ spec:
         - type: URLRewrite
           urlRewrite:
             path:
-              type: ReplacePrefixMatch
+              type: ReplaceFullPath
               replacePrefixMatch: /
       backendRefs:
         - name: backend-api
