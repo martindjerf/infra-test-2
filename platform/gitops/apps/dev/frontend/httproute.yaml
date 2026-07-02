@@ -9,6 +9,8 @@ metadata:
     app.kubernetes.io/part-of: terra
     terra/environment: dev
 spec:
+  hostnames: 
+    - frontend.dev.terra.local
   parentRefs:
     - name: public-http
       namespace: gateway-system

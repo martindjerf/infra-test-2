@@ -13,6 +13,7 @@ spec:
   listeners:
     - name: http
       protocol: HTTP
+      hostname: frontend.dev.terra.local
       port: 80
       allowedRoutes:
         namespaces:
