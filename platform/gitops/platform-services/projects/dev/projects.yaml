@@ -100,3 +100,5 @@ spec:
       kind: PodDisruptionBudget
     - group: bitnami.com
       kind: SealedSecret
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute

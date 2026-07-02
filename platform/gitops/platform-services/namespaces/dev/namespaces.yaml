@@ -66,6 +66,7 @@ metadata:
     app.kubernetes.io/part-of: terra
     terra/environment: dev
     terra/owner: platform
+    gateway-access: public
     pod-security.kubernetes.io/enforce: restricted
     pod-security.kubernetes.io/audit: restricted
     pod-security.kubernetes.io/warn: restricted
