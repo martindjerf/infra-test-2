@@ -38,7 +38,7 @@ spec:
           urlRewrite:
             path:
               type: ReplaceFullPath
-              replacePrefixMatch: /
+              replaceFullPath: /
       backendRefs:
         - name: backend-api
           port: 80
